@@ -299,6 +299,11 @@ Versione branchless:
 gcc -O3 -DBESMART crosssort.c -o crosssort_smart -lm
 ```
 
+Attivazione librerie PAPI:
+
+```bash
+gcc -O3 crosssort.c -o crosssort.PAPI -DUSE_PAPI -lpapi -lm
+```
 ---
 
 # Esecuzione
