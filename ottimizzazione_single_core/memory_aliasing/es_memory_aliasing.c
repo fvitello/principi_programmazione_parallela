@@ -2,14 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-static inline double seconds(void) {
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return ts.tv_sec + ts.tv_nsec * 1e-9;
-}
+#define CPU_TIME ({struct  timespec ts; clock_gettime( CLOCK_PROCESS_CPUTIME_ID, &ts ),    \
+                                          (double)ts.tv_sec +           \
+                                          (double)ts.tv_nsec * 1e-9;})
 
-void func1 ( int *restrict a, int *restrict b){
-//void func1 ( int *a, int *b){
+//void func1 ( int *restrict a, int *restrict b){
+void func1 ( int *a, int *b){
  *a += *b;
  *a += *b;
 }
@@ -25,8 +23,8 @@ int main(void) {
     int *b = &b_val;
 
     double t0, t1;
-    //const int iters = 1;
-    const int iters = 100000000;  // large count so timing is visible
+    const int iters = 1;
+    //const int iters = 100000000;  // large count so timing is visible
 
     // -------------------------------
     // 1. Non-aliasing case
@@ -34,18 +32,18 @@ int main(void) {
     a_val = 1;
     b_val = 1;
 
-    t0 = seconds();
+    t0 = CPU_TIME;
     for (int i = 0; i < iters; ++i)
         func1(a, b);
-    t1 = seconds();
+    t1 = CPU_TIME;
     printf("func1 non-alias:  a=%d  time=%.6f s\n", a_val, t1 - t0);
 
     a_val = 1;
     b_val = 1;
-    t0 = seconds();
+    t0 = CPU_TIME;
     for (int i = 0; i < iters; ++i)
         func2(a, b);
-    t1 = seconds();
+    t1 = CPU_TIME;
     printf("func2 non-alias:  a=%d  time=%.6f s\n", a_val, t1 - t0);
 
     // -------------------------------
@@ -55,24 +53,22 @@ int main(void) {
     a = b = &a_val;
     
     
-    t0 = seconds();
+    t0 = CPU_TIME;
     for (int i = 0; i < iters; ++i){
         a_val = 1;
         func1(a, b);
     }
-    t1 = seconds();
+    t1 = CPU_TIME;
     printf("func1 alias:      a=%d  time=%.6f s\n", a_val, t1 - t0);
 
     
-    t0 = seconds();
+    t0 = CPU_TIME;
     for (int i = 0; i < iters; ++i){
         a_val = 1;
         func2(a, b);
     }
-    t1 = seconds();
+    t1 = CPU_TIME;
     printf("func2 alias:      a=%d  time=%.6f s\n", a_val, t1 - t0);
 
     return 0;
 }
- 
-
