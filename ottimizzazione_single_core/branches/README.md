@@ -290,13 +290,13 @@ usano operazioni aritmetiche o bitwise per evitare il branch.
 Versione base:
 
 ```bash
-gcc -O3 crosssort.c -o crosssort
+gcc -O3 crosssort.c -o crosssort -lm
 ```
 
 Versione branchless:
 
 ```bash
-gcc -O3 -DBESMART crosssort.c -o crosssort_smart
+gcc -O3 -DBESMART crosssort.c -o crosssort_smart -lm
 ```
 
 ---
