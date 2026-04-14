@@ -43,8 +43,9 @@ possibile comportamento non deterministico
 variabili dichiarate private
 comportamento corretto
 
-##🔁 Clausole OpenMP
-##3️⃣ firstprivate
+## 🔁 Clausole OpenMP
+
+### 3️⃣ firstprivate
 
 📄 03_clauses__firstprivate.c
 
@@ -53,7 +54,7 @@ comportamento corretto
 riceve una copia inizializzata
 poi lavora in modo indipendente
 
-## 4️⃣ lastprivate
+### 4️⃣ lastprivate
 
 📄 03_clauses__lastprivate.c
 
@@ -64,7 +65,7 @@ il valore dell’ultima iterazione viene copiato fuori
 💡 Attenzione:
 
 “ultima” = ordine logico del loop, NON thread
-## 5️⃣ threadprivate
+### 5️⃣ threadprivate
 
 📄 03_clauses__threadprivate.c
 
@@ -76,7 +77,7 @@ ogni thread ha la sua copia
 💡 Importante:
 
 memoria allocata per thread → va liberata in parallelo
-## 6️⃣ copyin
+### 6️⃣ copyin
 
 📄 03_clauses__copyin.c
 
@@ -87,7 +88,7 @@ copia il valore del master a tutti i thread
 💡 Nota:
 
 utile con threadprivate
-## 7️⃣ copyprivate
+### 7️⃣ copyprivate
 
 📄 03_clauses__copyprivate.c
 
