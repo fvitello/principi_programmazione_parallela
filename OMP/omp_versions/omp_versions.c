@@ -38,20 +38,21 @@ int main( int argc, char **argv )
 {
 
   /* try to understand what compiler is being used */
-#if defined(__GNUC__) && !defined(__ICC) && !defined(__INTEL_COMPILER)
-  printf("gcc compiler %d.%d patchevel %d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
-#elif defined(__clang__)
-  printf("clang compiler %d.%d\n", __clang__, __clang_minor__);
+#ifdef __clang__
+    printf("Compiled with Clang %d.%d.%d\n",
+           __clang_major__,
+           __clang_minor__,
+           __clang_patchlevel__);
+#elif defined(__GNUC__)
+    printf("Compiled with GCC %d.%d.%d\n",
+           __GNUC__,
+           __GNUC_MINOR__,
+           __GNUC_PATCHLEVEL__);
 #elif defined(__INTEL_COMPILER)
-  printf("clang compiler %d update %d\n", __INTEL_COMPILER, __INTEL_COMPILER_UPDATE);
-#elif defined(__ICC)
-  printf("intel compiler %d\n", __ICC);
-#elif defined(__PGIC__)
-  printf("PGI compiler %d.%d patchlevel %d\n", __PGIC__, __PGIC_MINOR__, __PGIC_PATCHLEVEL__);
-#elif defined(__MSC_VER__)
-  printf("some MSoft compiler is running\n");
+    printf("Compiled with Intel Compiler %d\n",
+           __INTEL_COMPILER);
 #else
-  printf("An unknown compiler is running\n");
+    printf("Unknown compiler\n");
 #endif
   
 #if defined(_OPENMP)
