@@ -18,7 +18,7 @@
  *   t_start = MPI_Wtime()
  *   for rep = 0..NREP-1:
  *       ping-pong
- *   RTT_medio = (MPI_Wtime() - t_start) * 1e6 / NREP   [µs]
+ *   RTT_medio = (MPI_Wtime() - t_start) * NREP / 1e6   [µs]
  *   latenza   = RTT_medio / 2
  *
  * SCHEMA (con 4 processi)
