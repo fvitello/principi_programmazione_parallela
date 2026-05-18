@@ -1,8 +1,5 @@
 /*
- * ╔══════════════════════════════════════════════════════════╗
- * ║  Lab MPI  ·  Esercizio 01B  ·  Print ordinate           ║
- * ╚══════════════════════════════════════════════════════════╝
- *
+ * Esercizio 01A  ·  Print ordinate    
  * PUNTO DI PARTENZA
  * ─────────────────
  * Avete appena visto il ping-pong (01A): Send e Recv bloccanti.

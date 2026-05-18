@@ -1,6 +1,6 @@
 /*
  *
- * ESEMPIO 01a: PING-PONG CON MPI
+ * ESEMPIO 01b: PING-PONG CON MPI
  * COSA IMPARIAMO
  * ──────────────
  * • MPI_Send / MPI_Recv bloccanti
