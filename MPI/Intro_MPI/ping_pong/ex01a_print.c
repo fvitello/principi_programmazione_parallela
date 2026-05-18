@@ -2,8 +2,8 @@
  * Esercizio 01A  ·  Print ordinate    
  * PUNTO DI PARTENZA
  * ─────────────────
- * Avete appena visto il ping-pong (01A): Send e Recv bloccanti.
- * Ora usiamo gli stessi strumenti per risolvere il problema
+ * .
+ * Ora usiamo Send e Recv per risolvere il problema
  * dell'output disordinato che avete visto nell'esercizio 00A.
  *
  * PROBLEMA
@@ -91,9 +91,10 @@ int main(int argc, char **argv)
          *          dest=0, tag=0,
          *          MPI_COMM_WORLD)
          *
-         * strlen(msg)+1: inviamo anche il terminatore '\0'
-         *                così il processo 0 può stampare con printf.
-         */
+         * strlen(msg) conta i caratteri senza il terminatore '\0'.
+         * +1 per includerlo nel messaggio — il ricevitore può così
+         * usare printf direttamente sul buffer senza copiarlo. */
+
 
     }
 
