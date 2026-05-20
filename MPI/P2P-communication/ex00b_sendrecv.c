@@ -28,7 +28,7 @@
  *   rank 2: somma ricevuta = 3.00  (1+1+1)
  *   rank 3: somma ricevuta = 6.00  (2+2+2)
  *
- * COMPILARE:  mpicc -Wall -O2 -o ring_b ex00b_sendrecv.c -lm
+ * COMPILARE:  mpicc -Wall -O2 -o ring_b ex00b_sendrecv.c
  * ESEGUIRE:   mpirun -np 4 ./ring_b
  */
 
