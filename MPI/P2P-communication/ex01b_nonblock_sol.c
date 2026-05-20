@@ -1,7 +1,5 @@
 /*
- * ╔══════════════════════════════════════════════════════════╗
- * ║  Lab MPI  ·  Esercizio 01B  ·  Non-bloccanti [SOLUZIONE]║
- * ╚══════════════════════════════════════════════════════════╝
+ *  Esercizio 01B  ·  Non-bloccanti         
  */
 #include <mpi.h>
 #include <stdio.h>
