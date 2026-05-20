@@ -1,2 +1,5 @@
 .DS_Store
 /compilazione_ottimizzata/es1/build
+/MPI/P2P-communication/build
+/MPI/Intro_MPI/ping_pong/build
+/compilazione_ottimizzata/es2/build
