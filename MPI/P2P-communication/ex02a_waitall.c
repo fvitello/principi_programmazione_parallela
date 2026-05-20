@@ -30,7 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define N (1 << 22)   /* 4M double = 32 MB totale */
+#define N (1 << 22) /* 4M double = 32 MB totale */
 
 int main(int argc, char **argv)
 {
@@ -40,8 +40,10 @@ int main(int argc, char **argv)
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    if (N % size != 0) {
-        if (rank == 0) fprintf(stderr, "N non divisibile per %d\n", size);
+    if (N % size != 0)
+    {
+        if (rank == 0)
+            fprintf(stderr, "N non divisibile per %d\n", size);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
@@ -52,22 +54,24 @@ int main(int argc, char **argv)
     if (rank == 0)
     {
         double *array = malloc(N * sizeof(double));
-        for (int i = 0; i < N; i++) array[i] = (double)i;
+        for (int i = 0; i < N; i++)
+            array[i] = (double)i;
 
         double t0 = MPI_Wtime();
 
         /* ── Allocare array di request ───────────────────────────
          * Un request per ogni Isend verso gli altri processi.
          * size-1 richieste (non contiamo il processo 0 stesso). */
-        MPI_Request *reqs = malloc((size-1) * sizeof(MPI_Request));
+        MPI_Request *reqs = malloc((size - 1) * sizeof(MPI_Request));
 
         /* ── Avviare tutte le Isend ──────────────────────────────
          * Per ogni worker: inviare il suo chunk in modo
          * non-bloccante. Tutte le comunicazioni partono quasi
          * contemporaneamente — non aspettiamo nessuna. */
-        for (int p = 1; p < size; p++) {
+        for (int p = 1; p < size; p++)
+        {
             MPI_Isend(&array[p * chunk], chunk, MPI_DOUBLE,
-                      p, 0, MPI_COMM_WORLD, &reqs[p-1]);
+                      p, 0, MPI_COMM_WORLD, &reqs[p - 1]);
         }
 
         /* ── Calcolo sovrapposto: chunk 0 è del processo 0 ───────
@@ -76,20 +80,22 @@ int main(int argc, char **argv)
          * NOTA: array[] non è toccato qui — è in uso da Isend. */
         memcpy(local, array, chunk * sizeof(double));
         double local_sum = 0.0;
-        for (int i = 0; i < chunk; i++) local_sum += local[i];
+        for (int i = 0; i < chunk; i++)
+            local_sum += local[i];
 
         /* ── MPI_Waitall: aspettare tutte le Isend ───────────────
          * Firma: MPI_Waitall(count, reqs[], statuses[])
          * MPI_STATUSES_IGNORE: non ci interessa l'array di status.
          * Dopo il Waitall tutti i buffer (i chunk di array[])
          * sono stati inviati e possono essere riusati. */
-        MPI_Waitall(size-1, reqs, MPI_STATUSES_IGNORE);
+        MPI_Waitall(size - 1, reqs, MPI_STATUSES_IGNORE);
 
         double elapsed = (MPI_Wtime() - t0) * 1000.0;
         printf("P0: scatter completato in %.3f ms\n", elapsed);
         printf("P0: somma chunk 0 = %.0f\n", local_sum);
 
-        free(array); free(reqs);
+        free(array);
+        free(reqs);
     }
     /* ════════════════════ ALTRI PROCESSI ════════════════════════ */
     else
@@ -100,7 +106,8 @@ int main(int argc, char **argv)
 
         /* Calcolare la somma del chunk ricevuto */
         double local_sum = 0.0;
-        for (int i = 0; i < chunk; i++) local_sum += local[i];
+        for (int i = 0; i < chunk; i++)
+            local_sum += local[i];
 
         printf("P%d: ricevuto chunk, somma = %.0f\n", rank, local_sum);
     }
