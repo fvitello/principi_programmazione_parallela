@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     }
 
     int dims[2]    = {2, 3};
-    int periods[2] = {0, 0};
+    int periods[2] = {1, 1};
     MPI_Comm cart_comm;
     MPI_Cart_create(MPI_COMM_WORLD, 2, dims, periods, 0, &cart_comm);
 
