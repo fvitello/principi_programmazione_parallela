@@ -45,17 +45,11 @@ int main(int argc, char **argv)
 
 
     /* TODO 2: Allocare v[chunk] e inizializzare:
-     *   v[i] = (double)(rank * chunk + i) / N */
+     */
 
 
     /* TODO 3: OpenMP reduction per il massimo locale.
-     *   double local_max = 0.0;
-     *   #pragma omp parallel for reduction(max:local_max)
-     *   for (int i = 0; i < chunk; i++)
-     *       if (fabs(v[i]) > local_max) local_max = fabs(v[i]);
-     *
-     *   Alternativa più compatta:
-     *   local_max = fabs(v[i])  se fabs(v[i]) > local_max */
+     */
 
 
     /* TODO 4: MPI_Allreduce con MPI_MAX per ottenere global_max.
