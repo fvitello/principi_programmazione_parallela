@@ -36,20 +36,17 @@ int main(int argc, char **argv)
 
 
     /* TODO 2: Comm_rank, Comm_size.
-     *   Calcolare chunk = N / size.
+     *   Calcolare chunk.
      *   Stampare: processi, thread, chunk. */
 
 
     /* TODO 3: Allocare lA[chunk] e lB[chunk].
      *   Inizializzare direttamente (senza Scatter):
-     *   lA[i] = (double)(rank * chunk + i) / N
-     *   lB[i] = (double)(N - rank * chunk - i) / N */
+     */
 
 
     /* TODO 4: OpenMP reduction per calcolare local_dot.
-     *   #pragma omp parallel for reduction(+:local_dot)
-     *   for (int i = 0; i < chunk; i++)
-     *       local_dot += lA[i] * lB[i]; */
+     */
 
 
     /* TODO 5: MPI_Allreduce(MPI_SUM) per ottenere global_dot.
