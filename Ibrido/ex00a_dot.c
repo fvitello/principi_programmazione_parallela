@@ -1,9 +1,4 @@
 /*
- * ╔══════════════════════════════════════════════════════════╗
- * ║  Lab Ibrido  ·  Esercizio 00A  ·  Prodotto scalare      ║
- * ║  Codice mostrato dal docente                             ║
- * ╚══════════════════════════════════════════════════════════╝
- *
  * COSA IMPARIAMO
  * ──────────────
  * Il pattern ibrido base: MPI divide il lavoro tra i processi,

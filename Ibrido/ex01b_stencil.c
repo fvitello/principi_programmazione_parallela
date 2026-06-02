@@ -1,8 +1,4 @@
 /*
- * ╔══════════════════════════════════════════════════════════╗
- * ║  Lab Ibrido  ·  Esercizio 01B  ·  Stencil 1D            ║
- * ╚══════════════════════════════════════════════════════════╝
- *
  * PUNTO DI PARTENZA: ex01a_stencil.c
  * ────────────────────────────────────
  * In 01A lo stencil calcolava la media di 3 elementi vicini.
