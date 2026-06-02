@@ -63,19 +63,11 @@ int main(int argc, char **argv)
          *             ricevere in u[CHUNK+2],u[CHUNK+3] da right.
          *   Destra:   inviare u[CHUNK],u[CHUNK+1] al vicino right,
          *             ricevere in u[0],u[1] da left.
-         *
-         *   MPI_Sendrecv(&u[2], 2, MPI_DOUBLE, left, 0,
-         *                &u[CHUNK+2], 2, MPI_DOUBLE, right, 0,
-         *                MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-         *   (e speculare per l'altro lato)
          */
 
 
         /* TODO 2: Stencil a 5 punti con OpenMP.
          *   Loop da i=2 a i=CHUNK+1 (dominio completo).
-         *   u_new[i] = (u[i-2]+u[i-1]+u[i]+u[i+1]+u[i+2]) / 5.0
-         *
-         *   #pragma omp parallel for schedule(static)
          */
 
 
